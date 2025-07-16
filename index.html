@@ -2,86 +2,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wedding Invitation - Jaya & Mark</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Lato&display=swap" rel="stylesheet">
+  <title>Jaya & Mark's Wedding Invitation</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Noto+Serif+KR&display=swap">
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <div class="wrapper">
-    <!-- Cover Page -->
+  <div class="invitation-wrapper">
+    <!-- Section: Cover -->
     <section class="cover">
-      <div class="photo-style-selector">
-        <label>Select Cover Style:
-          <select id="photoStyle">
-            <option value="poster">Poster</option>
-            <option value="polaroid">Polaroid</option>
-          </select>
-        </label>
-      </div>
-      <div class="cover-photo" id="coverPhoto">
-        <img src="cover.jpg" alt="Jaya & Mark" />
+      <div class="photo poster-style">
+        <img src="cover-photo.jpg" alt="Our Wedding">
         <h1>Jaya & Mark</h1>
-        <p>With love and gratitude</p>
+        <p>We're getting married!</p>
       </div>
-    </section><!-- Couple Info -->
+    </section><!-- Section: Couple Info -->
 <section class="couple-info">
   <h2>Meet the Couple</h2>
-  <div class="info-box">
-    <p><strong>Jaya:</strong> Quiet thinker, ocean lover, eternal soul with a smile. 🌸</p>
-    <p><strong>Mark:</strong> Warm-hearted, curious spirit, makes life an adventure. 🎩</p>
-  </div>
+  <p><strong>Jaya</strong> – A quiet thinker, kind-hearted, and deeply loving.</p>
+  <p><strong>Mark</strong> – A curious soul, warm and full of life.</p>
 </section>
 
-<!-- Save the Date -->
+<!-- Section: D-Day Countdown -->
+<section class="countdown">
+  <h2>Countdown to the Day</h2>
+  <div id="countdown-timer"></div>
+</section>
+
+<!-- Section: Calendar -->
 <section class="calendar">
   <h2>Save the Date</h2>
-  <div class="calendar-box">
-    <p>🗓️ October 14, 2025</p>
-    <p>❤️</p>
+  <div class="calendar-view">
+    <p>🗓️ <strong>October 10, 2025</strong></p>
+    <div class="calendar-heart">❤️</div>
   </div>
 </section>
 
-<!-- Venue Info -->
+<!-- Section: Venue Info -->
 <section class="venue">
-  <h2>Wedding Venue</h2>
-  <p><strong>Location:</strong> Grand Hall, 123 Main Street, City</p>
+  <h2>Venue</h2>
+  <p><strong>Location:</strong> Hindusthan Club, Kolkata</p>
+  <p><strong>Time:</strong> 6:00 PM Onwards</p>
   <a href="https://maps.google.com" target="_blank">View on Google Maps</a>
 </section>
 
-<!-- Gallery -->
+<!-- Section: Gallery -->
 <section class="gallery">
-  <h2>Gallery</h2>
-  <div class="gallery-grid">
-    <img src="photo1.jpg" alt="Memory 1">
-    <img src="photo2.jpg" alt="Memory 2">
-    <img src="photo3.jpg" alt="Memory 3">
+  <h2>Our Journey</h2>
+  <div class="gallery-images">
+    <img src="photo1.jpg" alt="Photo 1">
+    <img src="photo2.jpg" alt="Photo 2">
+    <img src="photo3.jpg" alt="Photo 3">
   </div>
 </section>
 
-<!-- Gift + RSVP (Popup) -->
-<section class="extras">
+<!-- Section: Bank + RSVP -->
+<section class="gift-rsvp">
   <h2>Gifts & RSVP</h2>
-  <button onclick="document.getElementById('rsvpModal').style.display='block'">Open RSVP</button>
   <p><strong>Bank Info:</strong> Woori Bank 123-456-789 (Mark Choi)</p>
+  <button onclick="openRSVP()">Send RSVP</button>
 </section>
 
-<!-- Share -->
+<!-- Section: Share -->
 <section class="share">
-  <h2>Share the Love</h2>
-  <a href="https://wa.me/?text=Join%20Jaya%20and%20Mark%27s%20wedding!%20https://jbagaria.github.io/weddingevites" target="_blank">📱 WhatsApp</a>
-  <a href="https://sharer.kakao.com/talk/friends/picker/link" target="_blank">💬 KakaoTalk</a>
+  <h2>Spread the Joy</h2>
+  <a href="https://wa.me/?text=Join%20our%20wedding%20celebration!%20https://jbagaria.github.io/weddingevites" target="_blank">WhatsApp</a>
+  <a href="https://sharer.kakao.com/talk/friends/picker/link" target="_blank">KakaoTalk</a>
 </section>
 
-  </div>  <!-- RSVP Modal -->  <div id="rsvpModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="document.getElementById('rsvpModal').style.display='none'">&times;</span>
-      <h3>RSVP</h3>
-      <form>
-        <label>Name: <input type="text" /></label><br>
-        <label>Will you attend? <select><option>Yes</option><option>No</option></select></label><br>
-        <label>Message: <textarea></textarea></label><br>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-  </div>  <script src="main.js"></script></body>
+<!-- RSVP Modal -->
+<div id="rsvpModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeRSVP()">&times;</span>
+    <h3>RSVP Form</h3>
+    <form>
+      <label>Name:<input type="text" name="name"></label>
+      <label>Will you attend?
+        <select name="attendance">
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </label>
+      <label>Message:<textarea name="message"></textarea></label>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+  </div>
+</body>
 </html>
