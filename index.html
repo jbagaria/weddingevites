@@ -1,92 +1,120 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jaya & Mark's Wedding Invitation</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Noto+Serif+KR&display=swap">
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jaya & Mark Wedding Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Libre+Baskerville&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Libre Baskerville', serif;
+      background: url('https://www.transparenttextures.com/patterns/beige-paper.png');
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+    }
+    .card {
+      background: #fffaf5;
+      padding: 30px;
+      margin-bottom: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    h1, h2 {
+      font-family: 'Great Vibes', cursive;
+      color: #b85c5c;
+    }
+    .subtitle {
+      font-style: italic;
+      color: #666;
+    }
+    .photo-frame {
+      width: 100%;
+      height: 300px;
+      background: #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: #aaa;
+      border-radius: 12px;
+    }
+    .calendar-heart {
+      font-size: 20px;
+      padding: 20px;
+      text-align: center;
+    }
+    .calendar-heart::before {
+      content: "\2764\FE0F";
+      font-size: 40px;
+      color: #e57373;
+      display: block;
+    }
+    .venue-info {
+      text-align: center;
+      font-size: 18px;
+    }
+    .gallery, .bank-rsvp {
+      text-align: center;
+    }
+    .popup-button {
+      background: #e57373;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <div class="invitation-wrapper">
-    <!-- Section: Cover -->
-    <section class="cover">
-      <div class="photo poster-style">
-        <img src="cover-photo.jpg" alt="Our Wedding">
-        <h1>Jaya & Mark</h1>
-        <p>We're getting married!</p>
-      </div>
-    </section><!-- Section: Couple Info -->
-<section class="couple-info">
+  <div class="container">
+    <div class="card">
+      <div class="photo-frame">Upload Your Poster/Polaroid Photo</div>
+    </div><div class="card">
+  <h1>Jaya & Mark</h1>
+  <p class="subtitle">We're getting married!</p>
+</div>
+
+<div class="card">
   <h2>Meet the Couple</h2>
   <p><strong>Jaya</strong> – A quiet thinker, kind-hearted, and deeply loving.</p>
   <p><strong>Mark</strong> – A curious soul, warm and full of life.</p>
-</section>
+</div>
 
-<!-- Section: D-Day Countdown -->
-<section class="countdown">
-  <h2>Countdown to the Day</h2>
-  <div id="countdown-timer"></div>
-</section>
+<div class="card calendar-heart">
+  October 10, 2025
+</div>
 
-<!-- Section: Calendar -->
-<section class="calendar">
-  <h2>Save the Date</h2>
-  <div class="calendar-view">
-    <p>🗓️ <strong>October 10, 2025</strong></p>
-    <div class="calendar-heart">❤️</div>
-  </div>
-</section>
-
-<!-- Section: Venue Info -->
-<section class="venue">
+<div class="card venue-info">
   <h2>Venue</h2>
-  <p><strong>Location:</strong> Hindusthan Club, Kolkata</p>
-  <p><strong>Time:</strong> 6:00 PM Onwards</p>
-  <a href="https://maps.google.com" target="_blank">View on Google Maps</a>
-</section>
+  <p>Hindusthan Club Limited</p>
+  <p>Kolkata, India</p>
+</div>
 
-<!-- Section: Gallery -->
-<section class="gallery">
-  <h2>Our Journey</h2>
-  <div class="gallery-images">
-    <img src="photo1.jpg" alt="Photo 1">
-    <img src="photo2.jpg" alt="Photo 2">
-    <img src="photo3.jpg" alt="Photo 3">
-  </div>
-</section>
+<div class="card gallery">
+  <h2>Gallery</h2>
+  <p>Photo slideshow coming soon</p>
+</div>
 
-<!-- Section: Bank + RSVP -->
-<section class="gift-rsvp">
-  <h2>Gifts & RSVP</h2>
-  <p><strong>Bank Info:</strong> Woori Bank 123-456-789 (Mark Choi)</p>
-  <button onclick="openRSVP()">Send RSVP</button>
-</section>
+<div class="card bank-rsvp">
+  <h2>Blessings & RSVP</h2>
+  <p>Bank: Account details on request</p>
+  <button class="popup-button">RSVP Now</button>
+</div>
 
-<!-- Section: Share -->
-<section class="share">
-  <h2>Spread the Joy</h2>
-  <a href="https://wa.me/?text=Join%20our%20wedding%20celebration!%20https://jbagaria.github.io/weddingevites" target="_blank">WhatsApp</a>
-  <a href="https://sharer.kakao.com/talk/friends/picker/link" target="_blank">KakaoTalk</a>
-</section>
-
-<!-- RSVP Modal -->
-<div id="rsvpModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeRSVP()">&times;</span>
-    <h3>RSVP Form</h3>
-    <form>
-      <label>Name:<input type="text" name="name"></label>
-      <label>Will you attend?
-        <select name="attendance">
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
-        </select>
-      </label>
-      <label>Message:<textarea name="message"></textarea></label>
-      <button type="submit">Submit</button>
-    </form>
-  </div>
+<div class="card">
+  <h2>Share</h2>
+  <p>
+    <a href="https://wa.me/?text=https://jbagaria.github.io">Share on WhatsApp</a><br>
+    <a href="https://sharer.kakao.com/talk/friends/picker/link">Share on KakaoTalk</a>
+  </p>
 </div>
 
   </div>
