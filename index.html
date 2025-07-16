@@ -2,161 +2,86 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WeddingEvites</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fff9f6;
-      color: #333;
-    }
-    .container {
-      max-width: 600px;
-      margin: 2rem auto;
-      padding: 1.5rem;
-      background: white;
-      border-radius: 1.5rem;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    }
-    h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    .toggle {
-      border: none;
-      background: #f8f0e5;
-      border-radius: 1rem;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      cursor: pointer;
-      width: 100%;
-      text-align: left;
-      font-weight: bold;
-    }
-    .form-group {
-      margin-bottom: 1rem;
-    }
-    label {
-      display: block;
-      font-weight: 500;
-      margin-bottom: 0.3rem;
-    }
-    input, select, textarea {
-      width: 100%;
-      padding: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 0.5rem;
-      font-size: 1rem;
-    }
-    .preview {
-      text-align: center;
-      margin-top: 2rem;
-      padding: 2rem;
-      background: #fff1ec;
-      border-radius: 1rem;
-      font-family: 'Playfair Display', serif;
-    }
-    .preview h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-    .preview p {
-      font-style: italic;
-      margin-bottom: 0.5rem;
-    }
-    .switch {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-    .switch input {
-      margin-right: 0.5rem;
-    }
-  </style>
+  <title>Wedding Invitation - Jaya & Mark</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Lato&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h2>💌 Customize Your Wedding Invitation</h2>
-    <div class="form-group">
-      <label>Bride's Name:</label>
-      <input id="bride" placeholder="Enter bride's name" />
-    </div>
-    <div class="form-group">
-      <label>Groom's Name:</label>
-      <input id="groom" placeholder="Enter groom's name" />
-    </div>
-    <div class="form-group">
-      <label>Wedding Date:</label>
-      <input type="date" id="date" />
-    </div>
-    <div class="form-group">
-      <label>Wedding Time:</label>
-      <input type="time" id="time" />
-    </div>
-    <div class="form-group">
-      <label>Venue Name:</label>
-      <input id="venue" placeholder="e.g. Grand Hall" />
-    </div>
-    <div class="form-group">
-      <label>Venue Address:</label>
-      <input id="address" placeholder="e.g. 123 Main Street, City" />
-    </div>
-    <div class="form-group">
-      <label>Invitation Message:</label>
-      <textarea id="message">We invite you to celebrate with us</textarea>
-    </div>
-    <div class="switch">
-      <input type="checkbox" id="ourStory" />
-      <label for="ourStory">Include "Our Story" section</label>
-    </div>
-    <div class="switch">
-      <input type="checkbox" id="gallery" />
-      <label for="gallery">Include Photo Gallery</label>
-    </div>
-    <div class="switch">
-      <input type="checkbox" id="rsvp" />
-      <label for="rsvp">Include RSVP / Guestbook</label>
-    </div>
-    <div class="form-group">
-      <label>Main Photo:</label>
-      <input type="file" accept="image/*" id="mainPhoto" />
-    </div>
-    <div class="preview" id="preview">
-      <h1 id="namesDisplay">Your Names</h1>
-      <p id="msgDisplay">Your invitation message</p>
-      <p><strong>Date:</strong> <span id="dateDisplay"></span> at <span id="timeDisplay"></span></p>
-      <p><strong>Venue:</strong> <span id="venueDisplay"></span></p>
-      <p id="addressDisplay"></p>
-    </div>
-  </div>  <script>
-    const bride = document.getElementById('bride');
-    const groom = document.getElementById('groom');
-    const date = document.getElementById('date');
-    const time = document.getElementById('time');
-    const venue = document.getElementById('venue');
-    const address = document.getElementById('address');
-    const message = document.getElementById('message');
+  <div class="wrapper">
+    <!-- Cover Page -->
+    <section class="cover">
+      <div class="photo-style-selector">
+        <label>Select Cover Style:
+          <select id="photoStyle">
+            <option value="poster">Poster</option>
+            <option value="polaroid">Polaroid</option>
+          </select>
+        </label>
+      </div>
+      <div class="cover-photo" id="coverPhoto">
+        <img src="cover.jpg" alt="Jaya & Mark" />
+        <h1>Jaya & Mark</h1>
+        <p>With love and gratitude</p>
+      </div>
+    </section><!-- Couple Info -->
+<section class="couple-info">
+  <h2>Meet the Couple</h2>
+  <div class="info-box">
+    <p><strong>Jaya:</strong> Quiet thinker, ocean lover, eternal soul with a smile. 🌸</p>
+    <p><strong>Mark:</strong> Warm-hearted, curious spirit, makes life an adventure. 🎩</p>
+  </div>
+</section>
 
-    const namesDisplay = document.getElementById('namesDisplay');
-    const msgDisplay = document.getElementById('msgDisplay');
-    const dateDisplay = document.getElementById('dateDisplay');
-    const timeDisplay = document.getElementById('timeDisplay');
-    const venueDisplay = document.getElementById('venueDisplay');
-    const addressDisplay = document.getElementById('addressDisplay');
+<!-- Save the Date -->
+<section class="calendar">
+  <h2>Save the Date</h2>
+  <div class="calendar-box">
+    <p>🗓️ October 14, 2025</p>
+    <p>❤️</p>
+  </div>
+</section>
 
-    function updatePreview() {
-      namesDisplay.textContent = `${bride.value} & ${groom.value}`;
-      msgDisplay.textContent = message.value;
-      dateDisplay.textContent = new Date(date.value).toDateString();
-      timeDisplay.textContent = time.value;
-      venueDisplay.textContent = venue.value;
-      addressDisplay.textContent = address.value;
-    }
+<!-- Venue Info -->
+<section class="venue">
+  <h2>Wedding Venue</h2>
+  <p><strong>Location:</strong> Grand Hall, 123 Main Street, City</p>
+  <a href="https://maps.google.com" target="_blank">View on Google Maps</a>
+</section>
 
-    [bride, groom, date, time, venue, address, message].forEach(input => {
-      input.addEventListener('input', updatePreview);
-    });
-  </script></body>
+<!-- Gallery -->
+<section class="gallery">
+  <h2>Gallery</h2>
+  <div class="gallery-grid">
+    <img src="photo1.jpg" alt="Memory 1">
+    <img src="photo2.jpg" alt="Memory 2">
+    <img src="photo3.jpg" alt="Memory 3">
+  </div>
+</section>
+
+<!-- Gift + RSVP (Popup) -->
+<section class="extras">
+  <h2>Gifts & RSVP</h2>
+  <button onclick="document.getElementById('rsvpModal').style.display='block'">Open RSVP</button>
+  <p><strong>Bank Info:</strong> Woori Bank 123-456-789 (Mark Choi)</p>
+</section>
+
+<!-- Share -->
+<section class="share">
+  <h2>Share the Love</h2>
+  <a href="https://wa.me/?text=Join%20Jaya%20and%20Mark%27s%20wedding!%20https://jbagaria.github.io/weddingevites" target="_blank">📱 WhatsApp</a>
+  <a href="https://sharer.kakao.com/talk/friends/picker/link" target="_blank">💬 KakaoTalk</a>
+</section>
+
+  </div>  <!-- RSVP Modal -->  <div id="rsvpModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('rsvpModal').style.display='none'">&times;</span>
+      <h3>RSVP</h3>
+      <form>
+        <label>Name: <input type="text" /></label><br>
+        <label>Will you attend? <select><option>Yes</option><option>No</option></select></label><br>
+        <label>Message: <textarea></textarea></label><br>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>  <script src="main.js"></script></body>
 </html>
