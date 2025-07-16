@@ -1,136 +1,145 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wedding Invitation Form</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WeddingEvites</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 1rem;
+      background: #fefefe;
+      color: #333;
+    }
+    .section {
+      background: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    details summary {
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .preview {
+      background-color: #f4f4f4;
+      padding: 2rem;
+      text-align: center;
+      border-radius: 1rem;
+      margin-top: 1rem;
+    }
+    .preview img {
+      max-width: 100%;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+    }
+    .label-block {
+      display: block;
+      margin: 0.5rem 0;
+    }
+    .input-field {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.25rem;
+    }
+    .slider {
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
+  <h2>💌 Wedding Invitation Customizer</h2>  <div class="section">
+    <details open>
+      <summary>Main Invitation Settings</summary>
+      <label class="label-block">Couple's Names:
+        <input class="input-field" id="namesInput" type="text" placeholder="Jaya & Mark">
+      </label>
+      <label class="label-block">Invitation Message:
+        <input class="input-field" id="messageInput" type="text" placeholder="With love and gratitude">
+      </label>
+      <label class="label-block">Font Color:
+        <input type="color" id="colorPicker">
+      </label>
+      <label class="label-block">Font Style:
+        <select class="input-field" id="fontSelect">
+          <option value="cursive">Cursive</option>
+          <option value="serif">Serif</option>
+          <option value="sans-serif">Sans-serif</option>
+        </select>
+      </label>
+      <label class="label-block">Vertical Position:
+        <input type="range" min="0" max="100" value="50" class="slider" id="textPosSlider">
+      </label>
+      <label class="label-block">Upload Photo:
+        <input type="file" accept="image/*" id="photoUpload">
+      </label>
+    </details>
+  </div>  <div class="section">
+    <details>
+      <summary>D-Day Countdown</summary>
+      <label class="label-block">Wedding Date:
+        <input type="date" id="weddingDate">
+      </label>
+      <p id="ddayDisplay"></p>
+    </details>
+  </div>  <div class="section preview" id="preview">
+    <img id="previewImg" src="" alt="Preview" style="display:none;">
+    <h1 id="previewNames">Jaya & Mark</h1>
+    <p id="previewMsg">With love and gratitude</p>
+  </div>  <script>
+    const namesInput = document.getElementById('namesInput');
+    const messageInput = document.getElementById('messageInput');
+    const colorPicker = document.getElementById('colorPicker');
+    const fontSelect = document.getElementById('fontSelect');
+    const textPosSlider = document.getElementById('textPosSlider');
+    const photoUpload = document.getElementById('photoUpload');
 
-<div class="container">
-  <!-- Form Section -->
-  <section class="form-section">
-    <h2>Customize Your Invitation</h2>
-    <p>Fill in the details below to see a live preview of your mobile wedding invitation.</p>
+    const previewNames = document.getElementById('previewNames');
+    const previewMsg = document.getElementById('previewMsg');
+    const previewImg = document.getElementById('previewImg');
 
-    <div class="form-group">
-      <label for="brideNameInput">Bride's Name:</label>
-      <input type="text" id="brideNameInput" value="Alice" placeholder="e.g. Alice">
-    </div>
-    <div class="form-group">
-      <label for="groomNameInput">Groom's Name:</label>
-      <input type="text" id="groomNameInput" value="Bob" placeholder="e.g. Bob">
-    </div>
-    <div class="form-group">
-      <label for="dateInput">Wedding Date:</label>
-      <!-- Set a sample date value as an example -->
-      <input type="date" id="dateInput" value="2025-10-14">
-    </div>
-    <div class="form-group">
-      <label for="timeInput">Wedding Time:</label>
-      <input type="time" id="timeInput" value="12:00">
-    </div>
-    <div class="form-group">
-      <label for="venueNameInput">Venue Name:</label>
-      <input type="text" id="venueNameInput" value="Grand Hall" placeholder="e.g. Grand Hall">
-    </div>
-    <div class="form-group">
-      <label for="venueAddrInput">Venue Address:</label>
-      <input type="text" id="venueAddrInput" value="123 Main St, City" placeholder="e.g. 123 Main St, City">
-    </div>
+    namesInput.addEventListener('input', () => {
+      previewNames.textContent = namesInput.value;
+    });
+    messageInput.addEventListener('input', () => {
+      previewMsg.textContent = messageInput.value;
+    });
+    colorPicker.addEventListener('input', () => {
+      previewNames.style.color = colorPicker.value;
+      previewMsg.style.color = colorPicker.value;
+    });
+    fontSelect.addEventListener('change', () => {
+      previewNames.style.fontFamily = fontSelect.value;
+      previewMsg.style.fontFamily = fontSelect.value;
+    });
+    textPosSlider.addEventListener('input', () => {
+      const value = textPosSlider.value;
+      previewNames.style.marginTop = value + 'px';
+      previewMsg.style.marginTop = value + 'px';
+    });
+    photoUpload.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          previewImg.src = ev.target.result;
+          previewImg.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      }
+    });
 
-    <div class="form-group">
-      <label for="greetingInput">Invitation Message:</label>
-      <textarea id="greetingInput" rows="2" placeholder="e.g. We invite you to celebrate with us">We invite you to celebrate with us</textarea>
-    </div>
-
-    <!-- Optional Sections Toggles -->
-    <div class="form-group checkbox-group">
-      <input type="checkbox" id="includeStory">
-      <label for="includeStory">Include "Our Story" section</label>
-    </div>
-    <div class="form-group hidden" id="storyFields">
-      <label for="storyInput">Our Story / Additional Info:</label>
-      <textarea id="storyInput" rows="4" placeholder="Write your story or additional details..."></textarea>
-    </div>
-
-    <div class="form-group checkbox-group">
-      <input type="checkbox" id="includeGallery">
-      <label for="includeGallery">Include Photo Gallery</label>
-    </div>
-    <div class="form-group hidden" id="galleryFields">
-      <label for="galleryInput">Select Gallery Photos:</label>
-      <input type="file" id="galleryInput" accept="image/*" multiple>
-    </div>
-
-    <div class="form-group checkbox-group">
-      <input type="checkbox" id="includeRSVP">
-      <label for="includeRSVP">Include RSVP / Guestbook</label>
-    </div>
-    <!-- (No additional input fields needed for RSVP section) -->
-
-    <div class="form-group">
-      <label for="photoInput">Main Photo:</label>
-      <input type="file" id="photoInput" accept="image/*">
-    </div>
-  </section>
-
-  <!-- Preview Section -->
-  <section class="preview-section">
-    <h2>Live Invitation Preview</h2>
-    <div class="invite-preview">
-
-      <!-- Main Section (Names and Photo) -->
-      <div class="main-section">
-        <img id="previewPhoto" src="" alt="Your Photo" class="main-photo hidden">
-        <h1 id="previewNames">Alice &amp; Bob</h1>
-        <p id="previewGreeting" class="greeting-text"></p>
-      </div>
-
-      <!-- Details Section (Date, Time, Venue) -->
-      <div class="details-section">
-        <p><strong>Date:</strong> <span id="previewDate">Tuesday, October 14, 2025</span><span id="previewTimeContainer"> at <span id="previewTime">12:00 PM</span></span></p>
-        <p><strong>Venue:</strong> <span id="previewVenueName">Grand Hall</span></p>
-        <p id="addressLine"><span id="previewVenueAddr">123 Main St, City</span> <a href="https://maps.google.com/?q=123%20Main%20St%2C%20City" id="mapLink" target="_blank">View Map</a></p>
-      </div>
-
-      <!-- Our Story Section (optional) -->
-      <section id="storySection" class="story-section hidden">
-        <h3>Our Story</h3>
-        <p id="previewStory"></p>
-      </section>
-
-      <!-- Gallery Section (optional) -->
-      <section id="gallerySection" class="gallery-section hidden">
-        <h3>Photo Gallery</h3>
-        <div id="galleryGrid" class="gallery-grid"></div>
-      </section>
-
-      <!-- RSVP/Guestbook Section (optional) -->
-      <section id="rsvpSection" class="rsvp-section hidden">
-        <h3>RSVP / Guestbook</h3>
-        <form id="rsvpForm">
-          <div>
-            <input type="text" name="guestName" placeholder="Your Name" required>
-          </div>
-          <div>
-            Attend?: 
-            <label><input type="radio" name="attending" value="Yes" required> Yes</label>
-            <label><input type="radio" name="attending" value="No"> No</label>
-          </div>
-          <div>
-            <textarea name="message" rows="2" placeholder="Leave a message (optional)"></textarea>
-          </div>
-          <button type="submit">Submit</button>
-        </form>
-        <div id="guestbookMessages"></div>
-      </section>
-
-    </div>
-  </section>
-</div>
-
-<script src="script.js"></script>
-</body>
+    const weddingDateInput = document.getElementById('weddingDate');
+    const ddayDisplay = document.getElementById('ddayDisplay');
+    weddingDateInput.addEventListener('input', () => {
+      const target = new Date(weddingDateInput.value);
+      const today = new Date();
+      const diffTime = target - today;
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      ddayDisplay.textContent = diffDays >= 0 ? `${diffDays} days to go 💍` : `Wedding day passed 💐`;
+    });
+  </script></body>
 </html>
