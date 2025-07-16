@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Invitation Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <!-- Form Section -->
+  <section class="form-section">
+    <h2>Customize Your Invitation</h2>
+    <p>Fill in the details below to see a live preview of your mobile wedding invitation.</p>
+
+    <div class="form-group">
+      <label for="brideNameInput">Bride's Name:</label>
+      <input type="text" id="brideNameInput" value="Alice" placeholder="e.g. Alice">
+    </div>
+    <div class="form-group">
+      <label for="groomNameInput">Groom's Name:</label>
+      <input type="text" id="groomNameInput" value="Bob" placeholder="e.g. Bob">
+    </div>
+    <div class="form-group">
+      <label for="dateInput">Wedding Date:</label>
+      <!-- Set a sample date value as an example -->
+      <input type="date" id="dateInput" value="2025-10-14">
+    </div>
+    <div class="form-group">
+      <label for="timeInput">Wedding Time:</label>
+      <input type="time" id="timeInput" value="12:00">
+    </div>
+    <div class="form-group">
+      <label for="venueNameInput">Venue Name:</label>
+      <input type="text" id="venueNameInput" value="Grand Hall" placeholder="e.g. Grand Hall">
+    </div>
+    <div class="form-group">
+      <label for="venueAddrInput">Venue Address:</label>
+      <input type="text" id="venueAddrInput" value="123 Main St, City" placeholder="e.g. 123 Main St, City">
+    </div>
+
+    <div class="form-group">
+      <label for="greetingInput">Invitation Message:</label>
+      <textarea id="greetingInput" rows="2" placeholder="e.g. We invite you to celebrate with us">We invite you to celebrate with us</textarea>
+    </div>
+
+    <!-- Optional Sections Toggles -->
+    <div class="form-group checkbox-group">
+      <input type="checkbox" id="includeStory">
+      <label for="includeStory">Include "Our Story" section</label>
+    </div>
+    <div class="form-group hidden" id="storyFields">
+      <label for="storyInput">Our Story / Additional Info:</label>
+      <textarea id="storyInput" rows="4" placeholder="Write your story or additional details..."></textarea>
+    </div>
+
+    <div class="form-group checkbox-group">
+      <input type="checkbox" id="includeGallery">
+      <label for="includeGallery">Include Photo Gallery</label>
+    </div>
+    <div class="form-group hidden" id="galleryFields">
+      <label for="galleryInput">Select Gallery Photos:</label>
+      <input type="file" id="galleryInput" accept="image/*" multiple>
+    </div>
+
+    <div class="form-group checkbox-group">
+      <input type="checkbox" id="includeRSVP">
+      <label for="includeRSVP">Include RSVP / Guestbook</label>
+    </div>
+    <!-- (No additional input fields needed for RSVP section) -->
+
+    <div class="form-group">
+      <label for="photoInput">Main Photo:</label>
+      <input type="file" id="photoInput" accept="image/*">
+    </div>
+  </section>
+
+  <!-- Preview Section -->
+  <section class="preview-section">
+    <h2>Live Invitation Preview</h2>
+    <div class="invite-preview">
+
+      <!-- Main Section (Names and Photo) -->
+      <div class="main-section">
+        <img id="previewPhoto" src="" alt="Your Photo" class="main-photo hidden">
+        <h1 id="previewNames">Alice &amp; Bob</h1>
+        <p id="previewGreeting" class="greeting-text"></p>
+      </div>
+
+      <!-- Details Section (Date, Time, Venue) -->
+      <div class="details-section">
+        <p><strong>Date:</strong> <span id="previewDate">Tuesday, October 14, 2025</span><span id="previewTimeContainer"> at <span id="previewTime">12:00 PM</span></span></p>
+        <p><strong>Venue:</strong> <span id="previewVenueName">Grand Hall</span></p>
+        <p id="addressLine"><span id="previewVenueAddr">123 Main St, City</span> <a href="https://maps.google.com/?q=123%20Main%20St%2C%20City" id="mapLink" target="_blank">View Map</a></p>
+      </div>
+
+      <!-- Our Story Section (optional) -->
+      <section id="storySection" class="story-section hidden">
+        <h3>Our Story</h3>
+        <p id="previewStory"></p>
+      </section>
+
+      <!-- Gallery Section (optional) -->
+      <section id="gallerySection" class="gallery-section hidden">
+        <h3>Photo Gallery</h3>
+        <div id="galleryGrid" class="gallery-grid"></div>
+      </section>
+
+      <!-- RSVP/Guestbook Section (optional) -->
+      <section id="rsvpSection" class="rsvp-section hidden">
+        <h3>RSVP / Guestbook</h3>
+        <form id="rsvpForm">
+          <div>
+            <input type="text" name="guestName" placeholder="Your Name" required>
+          </div>
+          <div>
+            Attend?: 
+            <label><input type="radio" name="attending" value="Yes" required> Yes</label>
+            <label><input type="radio" name="attending" value="No"> No</label>
+          </div>
+          <div>
+            <textarea name="message" rows="2" placeholder="Leave a message (optional)"></textarea>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+        <div id="guestbookMessages"></div>
+      </section>
+
+    </div>
+  </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
