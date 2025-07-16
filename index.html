@@ -1,145 +1,162 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WeddingEvites</title>
   <style>
     body {
-      font-family: sans-serif;
       margin: 0;
-      padding: 1rem;
-      background: #fefefe;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff9f6;
       color: #333;
     }
-    .section {
-      background: #fff;
+    .container {
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 1.5rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .toggle {
+      border: none;
+      background: #f8f0e5;
       border-radius: 1rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
       padding: 1rem;
       margin-bottom: 1rem;
-    }
-    details summary {
       cursor: pointer;
+      width: 100%;
+      text-align: left;
       font-weight: bold;
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
     }
-    .preview {
-      background-color: #f4f4f4;
-      padding: 2rem;
-      text-align: center;
-      border-radius: 1rem;
-      margin-top: 1rem;
-    }
-    .preview img {
-      max-width: 100%;
-      border-radius: 1rem;
+    .form-group {
       margin-bottom: 1rem;
     }
-    .label-block {
+    label {
       display: block;
-      margin: 0.5rem 0;
+      font-weight: 500;
+      margin-bottom: 0.3rem;
     }
-    .input-field {
+    input, select, textarea {
       width: 100%;
       padding: 0.5rem;
-      margin-top: 0.25rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      font-size: 1rem;
     }
-    .slider {
-      width: 100%;
+    .preview {
+      text-align: center;
+      margin-top: 2rem;
+      padding: 2rem;
+      background: #fff1ec;
+      border-radius: 1rem;
+      font-family: 'Playfair Display', serif;
+    }
+    .preview h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .preview p {
+      font-style: italic;
+      margin-bottom: 0.5rem;
+    }
+    .switch {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .switch input {
+      margin-right: 0.5rem;
     }
   </style>
 </head>
 <body>
-  <h2>💌 Wedding Invitation Customizer</h2>  <div class="section">
-    <details open>
-      <summary>Main Invitation Settings</summary>
-      <label class="label-block">Couple's Names:
-        <input class="input-field" id="namesInput" type="text" placeholder="Jaya & Mark">
-      </label>
-      <label class="label-block">Invitation Message:
-        <input class="input-field" id="messageInput" type="text" placeholder="With love and gratitude">
-      </label>
-      <label class="label-block">Font Color:
-        <input type="color" id="colorPicker">
-      </label>
-      <label class="label-block">Font Style:
-        <select class="input-field" id="fontSelect">
-          <option value="cursive">Cursive</option>
-          <option value="serif">Serif</option>
-          <option value="sans-serif">Sans-serif</option>
-        </select>
-      </label>
-      <label class="label-block">Vertical Position:
-        <input type="range" min="0" max="100" value="50" class="slider" id="textPosSlider">
-      </label>
-      <label class="label-block">Upload Photo:
-        <input type="file" accept="image/*" id="photoUpload">
-      </label>
-    </details>
-  </div>  <div class="section">
-    <details>
-      <summary>D-Day Countdown</summary>
-      <label class="label-block">Wedding Date:
-        <input type="date" id="weddingDate">
-      </label>
-      <p id="ddayDisplay"></p>
-    </details>
-  </div>  <div class="section preview" id="preview">
-    <img id="previewImg" src="" alt="Preview" style="display:none;">
-    <h1 id="previewNames">Jaya & Mark</h1>
-    <p id="previewMsg">With love and gratitude</p>
+  <div class="container">
+    <h2>💌 Customize Your Wedding Invitation</h2>
+    <div class="form-group">
+      <label>Bride's Name:</label>
+      <input id="bride" placeholder="Enter bride's name" />
+    </div>
+    <div class="form-group">
+      <label>Groom's Name:</label>
+      <input id="groom" placeholder="Enter groom's name" />
+    </div>
+    <div class="form-group">
+      <label>Wedding Date:</label>
+      <input type="date" id="date" />
+    </div>
+    <div class="form-group">
+      <label>Wedding Time:</label>
+      <input type="time" id="time" />
+    </div>
+    <div class="form-group">
+      <label>Venue Name:</label>
+      <input id="venue" placeholder="e.g. Grand Hall" />
+    </div>
+    <div class="form-group">
+      <label>Venue Address:</label>
+      <input id="address" placeholder="e.g. 123 Main Street, City" />
+    </div>
+    <div class="form-group">
+      <label>Invitation Message:</label>
+      <textarea id="message">We invite you to celebrate with us</textarea>
+    </div>
+    <div class="switch">
+      <input type="checkbox" id="ourStory" />
+      <label for="ourStory">Include "Our Story" section</label>
+    </div>
+    <div class="switch">
+      <input type="checkbox" id="gallery" />
+      <label for="gallery">Include Photo Gallery</label>
+    </div>
+    <div class="switch">
+      <input type="checkbox" id="rsvp" />
+      <label for="rsvp">Include RSVP / Guestbook</label>
+    </div>
+    <div class="form-group">
+      <label>Main Photo:</label>
+      <input type="file" accept="image/*" id="mainPhoto" />
+    </div>
+    <div class="preview" id="preview">
+      <h1 id="namesDisplay">Your Names</h1>
+      <p id="msgDisplay">Your invitation message</p>
+      <p><strong>Date:</strong> <span id="dateDisplay"></span> at <span id="timeDisplay"></span></p>
+      <p><strong>Venue:</strong> <span id="venueDisplay"></span></p>
+      <p id="addressDisplay"></p>
+    </div>
   </div>  <script>
-    const namesInput = document.getElementById('namesInput');
-    const messageInput = document.getElementById('messageInput');
-    const colorPicker = document.getElementById('colorPicker');
-    const fontSelect = document.getElementById('fontSelect');
-    const textPosSlider = document.getElementById('textPosSlider');
-    const photoUpload = document.getElementById('photoUpload');
+    const bride = document.getElementById('bride');
+    const groom = document.getElementById('groom');
+    const date = document.getElementById('date');
+    const time = document.getElementById('time');
+    const venue = document.getElementById('venue');
+    const address = document.getElementById('address');
+    const message = document.getElementById('message');
 
-    const previewNames = document.getElementById('previewNames');
-    const previewMsg = document.getElementById('previewMsg');
-    const previewImg = document.getElementById('previewImg');
+    const namesDisplay = document.getElementById('namesDisplay');
+    const msgDisplay = document.getElementById('msgDisplay');
+    const dateDisplay = document.getElementById('dateDisplay');
+    const timeDisplay = document.getElementById('timeDisplay');
+    const venueDisplay = document.getElementById('venueDisplay');
+    const addressDisplay = document.getElementById('addressDisplay');
 
-    namesInput.addEventListener('input', () => {
-      previewNames.textContent = namesInput.value;
-    });
-    messageInput.addEventListener('input', () => {
-      previewMsg.textContent = messageInput.value;
-    });
-    colorPicker.addEventListener('input', () => {
-      previewNames.style.color = colorPicker.value;
-      previewMsg.style.color = colorPicker.value;
-    });
-    fontSelect.addEventListener('change', () => {
-      previewNames.style.fontFamily = fontSelect.value;
-      previewMsg.style.fontFamily = fontSelect.value;
-    });
-    textPosSlider.addEventListener('input', () => {
-      const value = textPosSlider.value;
-      previewNames.style.marginTop = value + 'px';
-      previewMsg.style.marginTop = value + 'px';
-    });
-    photoUpload.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = (ev) => {
-          previewImg.src = ev.target.result;
-          previewImg.style.display = 'block';
-        };
-        reader.readAsDataURL(file);
-      }
-    });
+    function updatePreview() {
+      namesDisplay.textContent = `${bride.value} & ${groom.value}`;
+      msgDisplay.textContent = message.value;
+      dateDisplay.textContent = new Date(date.value).toDateString();
+      timeDisplay.textContent = time.value;
+      venueDisplay.textContent = venue.value;
+      addressDisplay.textContent = address.value;
+    }
 
-    const weddingDateInput = document.getElementById('weddingDate');
-    const ddayDisplay = document.getElementById('ddayDisplay');
-    weddingDateInput.addEventListener('input', () => {
-      const target = new Date(weddingDateInput.value);
-      const today = new Date();
-      const diffTime = target - today;
-      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      ddayDisplay.textContent = diffDays >= 0 ? `${diffDays} days to go 💍` : `Wedding day passed 💐`;
+    [bride, groom, date, time, venue, address, message].forEach(input => {
+      input.addEventListener('input', updatePreview);
     });
   </script></body>
 </html>
